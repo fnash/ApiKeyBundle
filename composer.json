@@ -1,0 +1,22 @@
+{
+  "name": "fnash/api-key-bundle",
+  "type": "symfony-bundle",
+  "description": "ApiKey authentication for Symfony2",
+  "keywords": ["api", "key"],
+  "homepage": "https://github.com/fnash/ApiKeyBundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fayez Naccache",
+      "email": "fayez.naccache@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "symfony/symfony": ">=2.3.0",
+    "doctrine/common": ">=2.1"
+  },
+  "autoload": {
+    "psr-0": { "Fnash\\Bundle\\ApiKeyBundle": "src/" }
+  }
+}

@@ -1,0 +1,26 @@
+services:
+    Fnash.api_key.authentication_listener:
+        class: Fnash\ApiKeyBundle\Security\Firewall\ApiKeyListener
+        arguments: [ "@security.context", "@Fnash.api_key.authentication_provider", "@Fnash.api_key.extractor" ]
+
+    Fnash.api_key.extractor.query:
+        class: Fnash\ApiKeyBundle\Extractor\QueryExtractor
+        arguments: [ "%Fnash.api_key.parameter_name%" ]
+        public: false
+    Fnash.api_key.extractor.header:
+        class: Fnash\ApiKeyBundle\Extractor\HeaderExtractor
+        arguments: [ "%Fnash.api_key.parameter_name%" ]
+        public: false
+
+    Fnash.api_key.generator:
+        class: Fnash\ApiKeyBundle\Util\ApiKeyGenerator
+        public: false
+
+    Fnash.api_key.user_provider:
+        class: Fnash\ApiKeyBundle\Security\User\ApiClientUserProvider
+        arguments: [ "@doctrine.orm.entity_manager" ]
+
+
+    Fnash.api_key.authentication_provider:
+        class: Fnash\ApiKeyBundle\Security\Authentication\Provider\ApiClientAuthenticationProvider
+        arguments: [ "@Fnash.api_key.user_provider" ]
